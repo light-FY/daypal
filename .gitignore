@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+android/.gradle/
+android/build/
+android/app/build/
+ios/App/build/
+ios/App/App/public/
+android/app/src/main/assets/public/
+ios/App/CapApp-SPM/.build/
+**/xcuserdata/
+
+# Local machine config
+android/local.properties
+*.log
+
+# Signing secrets — never commit
+android/keystore/
+android/keystore.properties
+*.jks
+*.keystore
+
+# OS
+.DS_Store
+Thumbs.db

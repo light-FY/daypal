@@ -1,0 +1,11 @@
+﻿{
+  "appId": "com.banban.app",
+  "appName": "伴办",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}
