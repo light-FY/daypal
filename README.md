@@ -1,15 +1,28 @@
-# 伴办 · Android 安装包 + iOS 工程
+# 伴办（Daypal）· Android / iOS / HarmonyOS
 
-> 版本 **0.9.1** · Android 包名 `com.banban.app` · iOS Bundle ID `com.banban.app`  
-> Android 7.0+ · iOS 15.0+ · 仅手机竖屏
+> 中文名：**伴办** · 英文名：**Daypal**  
+> 版本 **0.9.1** · 包名 / Bundle ID：`com.banban.app`  
+> Android 7.0+ · iOS 15.0+ · HarmonyOS NEXT 5.x+ · 仅手机竖屏
 
-Android 安装包已发布在 **[GitHub Releases](https://github.com/light-FY/daypal/releases)**（约 3.4MB）。
+## 下载
 
-SHA-256：`6205D293D29D743FFEC71D3AB20F704D3583F6F5AA8FE6D6961A2F2DE295B6CA`
+全部资源在 **[GitHub Releases](https://github.com/light-FY/daypal/releases/tag/v0.9.1)**，和 APK 放在一起：
+
+| 平台 | 文件 | 说明 |
+| --- | --- | --- |
+| Android | `Banban-0.9.1-android.apk` | 已签名，可直接安装 |
+| HarmonyOS | `Banban-0.9.1-harmony-unsigned.hap` | 未签名，需华为签名后安装 |
+| iOS | `Banban-0.9.1-ios-unsigned.ipa` | 未签名，需 Sideloadly/AltStore 签名后安装 |
+
+SHA-256：
+
+- APK：`6205D293D29D743FFEC71D3AB20F704D3583F6F5AA8FE6D6961A2F2DE295B6CA`
+- HAP：`7EDA42E44C9A269A8B4721A6BDF9A686F21FA9E048D6AE9F249FC48710604680`
+- IPA：`32B0B836E571DC3FE103E759D9157CCCD435DD4783588EE1D98618D48D9F1E51`
 
 这是用 Capacitor 封装的原生应用：界面、数据、解析器与网页版完全一致，额外接入了 **系统本地通知**，不再依赖浏览器是否还开着。
 
-> **关于 iOS `.ipa`**：iOS Xcode 工程已经生成并配置好，但当前机器是 Windows，没有 Xcode，也没有 Apple 签名证书，因此**无法在本机编译出可安装的 `.ipa`**。构建方法见 [iOS BUILD](ios/BUILD.md)。
+> **关于未签名包**：HAP / IPA 是未签名构建产物，只用于开发测试或自行签名；不包含证书、私钥或密码。iOS 的 unsigned IPA 可由 GitHub Actions 的 macOS runner 重新生成，见 [iOS BUILD](ios/BUILD.md)。
 
 ## 产品文档
 
@@ -159,7 +172,6 @@ cd android
 ---
 
 ## 6. iOS 工程
-
 `ios/` 目录是完整的 Capacitor iOS 工程，已配置：
 
 - App 名「伴办」、Bundle ID `com.banban.app`、版本 0.9.1
@@ -179,7 +191,22 @@ cd android
 
 ---
 
-## 7. 已在模拟器验证
+## 7. HarmonyOS NEXT 工程
+
+`harmony/` 是面向纯血鸿蒙（HarmonyOS NEXT 5.x+）的 ArkTS 工程：
+
+- 用 ArkUI `Web` 组件加载现有 `www/` 前端；
+- 用 `notificationManager` 预约系统通知；
+- 共用本地数据格式，不改业务代码；
+- 需要 DevEco Studio + HarmonyOS SDK + 华为签名，构建 `.hap` / `.app`。
+
+详细说明：[harmony/README.md](harmony/README.md)
+
+> 已用 command line tools 5.0.5.200 + HarmonyOS SDK 5.0.1(13) + JDK 17 编译出未签名 HAP：`../伴办-HarmonyOS-0.9.1-unsigned.hap`。未签名 HAP 不能直接安装，需用 DevEco / 华为账号签名；尚未做鸿蒙真机运行验证。
+
+---
+
+## 8. 已在模拟器验证
 
 Android 15（API 35）x86_64，官方 emulator：
 
@@ -195,7 +222,7 @@ Android 15（API 35）x86_64，官方 emulator：
 
 ---
 
-## 8. 已知限制
+## 9. 已知限制
 
 - 不同厂商的省电策略差异很大（小米、华为、OPPO、vivo 等），可能延迟或拦截后台闹钟；请把伴办加入“不受限制/允许后台运行”。
 - Android 12+ 的精确闹钟需要用户手动允许；未允许时会退化为非精确闹钟，可能延迟几分钟。
