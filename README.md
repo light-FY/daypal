@@ -73,7 +73,7 @@ adb install 伴办-Android.apk
 
 ---
 
-## 3. Android 版新增能力
+## 3. 能力
 
 | 能力 | 说明 |
 | --- | --- |
