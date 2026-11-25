@@ -6,7 +6,7 @@
 
 ## 下载
 
-全部资源在 **[GitHub Releases](https://github.com/light-FY/daypal/releases/tag/v0.9.1)**，和 APK 放在一起：
+全部资源在 **[GitHub Releases](https://github.com/light-FY/daypal/releases/tag/v0.9.1)**
 
 | 平台 | 文件 | 说明 |
 | --- | --- | --- |
